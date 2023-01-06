@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String _sensorAvailable = 'Unknown';
   String _batteryLevel = 'Unknown';
+  String _logRocketMsg = '';
   double _pressureReading = 0;
 
   late StreamSubscription pressureSubscription;
@@ -57,6 +58,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(
               height: 10,
+            ),
+             Text("LogRocket: $_logRocketMsg"),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: _logRocketInit,
+              child: const Text("LogRocket Init"),
             ),
             Text("Battery Level: $_batteryLevel"),
             const SizedBox(
@@ -92,6 +101,21 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  Future<void> _logRocketInit() async {
+    print("Calling logrocket...");
+    final arg = {
+      "name": "George Ikwegbu",
+      "email": "g.ikwegbu@gmail.com",
+      "subcriptionPlan": "premium"
+    };
+    try {
+      final String _ = await methodChannel.invokeMethod("logRocket");
+      _logRocketMsg = _;
+    } on PlatformException catch (e) {
+      debugPrint("George, channel error for LogRocket Implementation: $e");
+    }
   }
 
   Future<void> _getBatteryLevel() async {

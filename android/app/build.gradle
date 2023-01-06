@@ -44,7 +44,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.native_flutter_code"
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -63,6 +63,14 @@ flutter {
     source '../..'
 }
 
+repositories {
+    // Add this declaration to any existion repositories block.
+    maven { url "https://storage.googleapis.com/logrocket-maven/" }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Add this declaration to any existing dependencies block.
+    // implementation "com.logrocket:logrocket:[1.0, 2.0)"
+    implementation 'com.logrocket:logrocket:1.10.0'
 }
