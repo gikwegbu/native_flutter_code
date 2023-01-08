@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 10,
             ),
-             Text("LogRocket: $_logRocketMsg"),
+            Text("LogRocket: $_logRocketMsg"),
             const SizedBox(
               height: 10,
             ),
@@ -105,14 +105,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _logRocketInit() async {
     print("Calling logrocket...");
-    final arg = {
-      "name": "George Ikwegbu",
-      "email": "g.ikwegbu@gmail.com",
-      "subcriptionPlan": "premium"
+    final args = <String, dynamic>{
+      "name": "Ebuka Emmanuel",
+      "email": "ebukanuel@gmail.com",
+      "userId": "afyeuja4383ua8233",
+      "logRocketAppId": "jrpbsi/amaze",
     };
     try {
-      final String _ = await methodChannel.invokeMethod("logRocket");
+      final String _ = await methodChannel.invokeMethod("logRocket", args);
       _logRocketMsg = _;
+      print("George this is the res from LogRocket(On flutter): $_");
     } on PlatformException catch (e) {
       debugPrint("George, channel error for LogRocket Implementation: $e");
     }

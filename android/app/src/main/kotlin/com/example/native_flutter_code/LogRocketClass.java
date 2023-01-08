@@ -11,34 +11,45 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LogRocketClass extends Application {
+  String name, email, userId, logRocketAppId;
 
+  public LogRocketClass setName(String s) {
+      name = s;
+      return new LogRocketClass();
+  }
+    public LogRocketClass setEmail(String s) {
+        email = s;
+        return new LogRocketClass();
+    }
+
+    public LogRocketClass setUserId(String s) {
+        userId = s;
+        return new LogRocketClass();
+    }
+
+    public LogRocketClass setAppId(String s) {
+        logRocketAppId = s;
+        return new LogRocketClass();
+    }
 
   @Override
   protected void attachBaseContext(Context base) {
     super.attachBaseContext(base);
-
-    println("George, this is from the LogRocket class...");
+    Map<String, String> userData = new HashMap<>();
 
     SDK.init(
             this,
             base,
             options -> {
-              // options.setAppID("<APP_SLUG>");
-              options.setAppID("s9ns7r/george-ikwegbu");
+//              options.setAppID("s9ns7r/george-ikwegbu");
+              options.setAppID(logRocketAppId);
 //              options.setAppID("jrpbsi/amaze");
             }
     );
+    userData.put("name", name);
+    userData.put("email", email);
 
-
-    Map<String, String> userData = new HashMap<>();
-
-    userData.put("name", "George Chinedu Ikwegbu");
-    userData.put("email", "g.ikwegbu@gmail.com");
-    userData.put("subscriptionPlan", "premium");
-
-    println("George these are the user's data: " +userData);
-
-    SDK.identify("THE_USER_ID_IN_YOUR_APP", userData);
+    SDK.identify(userId, userData);
 
   }
 }
