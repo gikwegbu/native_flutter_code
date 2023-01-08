@@ -115,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       final String _ = await methodChannel.invokeMethod("logRocket", args);
       _logRocketMsg = _;
+      setState(() {});
       print("George this is the res from LogRocket(On flutter): $_");
     } on PlatformException catch (e) {
       debugPrint("George, channel error for LogRocket Implementation: $e");

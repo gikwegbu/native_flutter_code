@@ -49,6 +49,6 @@ public class MainActivity extends FlutterActivity {
 
         lG.attachBaseContext(getBaseContext());
 
-        return "Initialization Complete! Name: "+name +", email: "+email + ", userId: "+userId+ ", appId: "+logRocketAppId;
+        return "Initialization Complete!";
     }
 }
