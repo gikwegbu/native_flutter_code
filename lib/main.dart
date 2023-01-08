@@ -106,10 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _logRocketInit() async {
     print("Calling logrocket...");
     final args = <String, dynamic>{
-      "name": "Ebuka Emmanuel",
-      "email": "ebukanuel@gmail.com",
-      "userId": "afyeuja4383ua8233",
-      "logRocketAppId": "jrpbsi/amaze",
+      "name": "Chioma Chioma",
+      "email": "chichi@gmail.com",
+      "userId": "chioahdsfasdkwe",
+      // "logRocketAppId": "jrpbsi/amaze",
+      "logRocketAppId": "s9ns7r/george-ikwegbu",
     };
     try {
       final String _ = await methodChannel.invokeMethod("logRocket", args);

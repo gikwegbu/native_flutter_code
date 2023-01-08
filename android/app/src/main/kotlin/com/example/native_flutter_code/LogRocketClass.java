@@ -2,6 +2,7 @@ package com.example.native_flutter_code;
 
 import static java.sql.DriverManager.println;
 
+
 import io.flutter.app.FlutterApplication;
 import android.app.Application;
 import com.logrocket.core.SDK;
@@ -12,6 +13,13 @@ import java.util.Map;
 
 public class LogRocketClass extends Application {
   String name, email, userId, logRocketAppId;
+
+//  public LogRocketClass(String name, String email, String userId, String logRocketAppId) {
+//      this.name = name;
+//      this.email = email;
+//      this.userId = userId;
+//      this.logRocketAppId = logRocketAppId;
+//  }
 
   public LogRocketClass setName(String s) {
       name = s;
@@ -32,24 +40,45 @@ public class LogRocketClass extends Application {
         return new LogRocketClass();
     }
 
-  @Override
-  protected void attachBaseContext(Context base) {
-    super.attachBaseContext(base);
-    Map<String, String> userData = new HashMap<>();
+//  @Override
+//  protected void attachBaseContext(Context base) {
+//    super.attachBaseContext(base);
+//    Map<String, String> userData = new HashMap<>();
+//
+//    SDK.init(
+//            this,
+//            base,
+//            options -> {
+////              options.setAppID("s9ns7r/george-ikwegbu");
+//              options.setAppID(logRocketAppId);
+////              options.setAppID("jrpbsi/amaze");
+//            }
+//    );
+//    userData.put("name", name);
+//    userData.put("email", email);
+//
+//    SDK.identify(userId, userData);
+//
+//  }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
 
-    SDK.init(
-            this,
-            base,
-            options -> {
-//              options.setAppID("s9ns7r/george-ikwegbu");
-              options.setAppID(logRocketAppId);
-//              options.setAppID("jrpbsi/amaze");
-            }
-    );
-    userData.put("name", name);
-    userData.put("email", email);
+        SDK.init(
+                this,
+                base,
+                options -> {
+                    options.setAppID(logRocketAppId);
+                }
+        );
 
-    SDK.identify(userId, userData);
 
-  }
+        Map<String, String> userData = new HashMap<>();
+
+        userData.put("name", name);
+        userData.put("email", email);
+
+        SDK.identify(userId, userData);
+
+    }
 }

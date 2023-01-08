@@ -41,14 +41,14 @@ public class MainActivity extends FlutterActivity {
 
     private String callLogRocket(String name, String email, String userId, String logRocketAppId) {
 //        LogRocketClass  lG = new LogRocketClass(name, email, userId, logRocketAppId);
-        LogRocketClass  lG = new LogRocketClass()
-                .setName(name)
-                .setEmail(email)
-                .setUserId(userId)
-                .setAppId(logRocketAppId);
+        LogRocketClass  lG = new LogRocketClass();
+        lG.setAppId(logRocketAppId);
+        lG.setName(name);
+        lG.setEmail(email);
+        lG.setUserId(userId);
 
         lG.attachBaseContext(getBaseContext());
 
-        return "Initialization Complete! Name: "+name +", email: "+email + ", userId: "+userId;
+        return "Initialization Complete! Name: "+name +", email: "+email + ", userId: "+userId+ ", appId: "+logRocketAppId;
     }
 }
